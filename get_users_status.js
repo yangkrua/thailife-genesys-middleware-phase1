@@ -3,7 +3,7 @@
 const fs = require('fs');
 
 const dTime = require("moment"); 
-const myConfig = require('./app/config/config.js'); 
+const config = require('./app/config/config.js'); 
 
 
 // Get client credentials from environment variables
@@ -19,13 +19,13 @@ let routingApi  = new platformClient.RoutingApi();
 
 // Get client credentials from environment variables
 
-//const CLIENT_ID             = myConfig.LOCUS_CLIENT_ID;  //'4589c421-7a55-4ecd-897f-35b82c4a7724'; 
-//const CLIENT_SECRET         = myConfig.LOCUS_CLIENT_SECRET; //'QLLhR5JXLWIJ27yQ4jjC8WtwML0vFoIiCqtLJHJjjS0'; 
-//const ENVIROMENT            = myConfig.LOCUS_ENVIROMENT;  //'https://mypurecloud.jp'; 
+//const CLIENT_ID             = config.LOCUS_CLIENT_ID;  //'4589c421-7a55-4ecd-897f-35b82c4a7724'; 
+//const CLIENT_SECRET         = config.LOCUS_CLIENT_SECRET; //'QLLhR5JXLWIJ27yQ4jjC8WtwML0vFoIiCqtLJHJjjS0'; 
+//const ENVIROMENT            = config.LOCUS_ENVIROMENT;  //'https://mypurecloud.jp'; 
 
-const CLIENT_ID             = myConfig.TLI_CLIENT_ID;  //'4589c421-7a55-4ecd-897f-35b82c4a7724'; 
-const CLIENT_SECRET         = myConfig.TLI_CLIENT_SECRET; //'QLLhR5JXLWIJ27yQ4jjC8WtwML0vFoIiCqtLJHJjjS0'; 
-const ENVIROMENT            = myConfig.TLI_ENVIROMENT;  //'https://mypurecloud.jp'; 
+const CLIENT_ID             = config.TLI_CLIENT_ID;  //'4589c421-7a55-4ecd-897f-35b82c4a7724'; 
+const CLIENT_SECRET         = config.TLI_CLIENT_SECRET; //'QLLhR5JXLWIJ27yQ4jjC8WtwML0vFoIiCqtLJHJjjS0'; 
+const ENVIROMENT            = config.TLI_ENVIROMENT;  //'https://mypurecloud.jp'; 
 
 if(ENVIROMENT) client.setEnvironment(ENVIROMENT);
 

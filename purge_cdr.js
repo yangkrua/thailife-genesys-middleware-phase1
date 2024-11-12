@@ -7,7 +7,7 @@ async function main()
     await utils.removeFolderRecursive(rootPath);
 
     const logPath = './logs';
-    await utils.removeLogFile_15d(logPath);
+    await utils.removeLogFile_30d(logPath);
 }
   
 main()
