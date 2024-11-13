@@ -395,10 +395,10 @@ let ManualGenA_Number_Report_ByDate = (pDate) => {
         segmentFilters: [
           {
             predicates: [
-               {
-                 "dimension": "purpose",
-                 "value": "Customer"
-               },
+              {
+                "dimension": "purpose",
+                "value": "Customer"
+              },
               {
                 dimension: "direction",
                 value: "inbound",
@@ -683,8 +683,8 @@ let ManualGenLoginLogoutByDateReport = (pDate) => {
           dataResult = await usersApi.postAnalyticsUsersDetailsQuery(body);
           log.info( `API->postAnalyticsUsersDetailsQuery, PageNo=${ body.paging.pageNumber }, Result: ${JSON.stringify(dataResult)}` );
 
-          //textDataBody += await "\n";
-          //textDataBody += await parserUsersLoginAvailable(dataResult, users);
+          textDataBody += await "\n";
+          textDataBody += await parserUsersLoginAvailable(dataResult, users);
         } //end for
       }
 
@@ -987,7 +987,7 @@ let isTransactionInboundCaptureFlowID = async (data_participants) => {
   for (const item of data_participants) {
     for (const pID of config.GENESES.filter_by_flow_ids) {
       if (await item.sessions[0].flow !== undefined 
-       && await item.sessions[0].flow.flowId === pID) {
+      && await item.sessions[0].flow.flowId === pID) {
         return true;
       }
     }
@@ -1032,7 +1032,6 @@ let parserCDR_A_Number = async (data) => {
   let textCRD   = await '';
 
   for (const item of data.conversations) {
- 
     if (
       (await isValidPhoneNumber(item.participants[0].sessions[0].ani)) &&
       (await isValidPhoneNumber(item.participants[0].sessions[0].dnis)) &&
