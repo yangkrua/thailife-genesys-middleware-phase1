@@ -1,41 +1,41 @@
-const config   = require('../config/server');
+const config = require('../config/server');
 //const { path } = require('app-root-path');
-var winston    = require('winston');
+var winston = require('winston');
 require('winston-daily-rotate-file');
 
 var options = {
-  rotateFile: {    
+  rotateFile: {
     level: 'debug',
     filename: config.WinstonLogger.filename,
     datePattern: config.WinstonLogger.datePattern,
     zippedArchive: config.WinstonLogger.zippedArchive,
     maxSize: config.WinstonLogger.maxSize,
     maxFiles: config.WinstonLogger.maxFiles
-  },  
+  },
   console: {
     level: 'debug',
     handleExceptions: true,
-    json: false,    
+    json: false,
     zippedArchive: false,
-    timestamp: function(){
-    return Date.now();
-    } 
+    timestamp: function () {
+      return Date.now();
+    }
   },
 };
 
 var transport_file = new winston.transports.DailyRotateFile(options.rotateFile);
-transport_file.on('rotate', function(oldFilename, newFilename) {
-  logger.info({'message':'New file created!'});  
+transport_file.on('rotate', function (oldFilename, newFilename) {
+  logger.info({ 'message': 'New file created!' });
 });
 
 
 
 var logger = new winston.createLogger({
-  format: winston.format.combine(    
+  format: winston.format.combine(
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.printf(info => `[${info.timestamp}] ${info.level}: ${info.message}`)
   ),
-  transports: [    
+  transports: [
     transport_file,
     new winston.transports.Console(options.console)
   ],
@@ -44,4 +44,4 @@ var logger = new winston.createLogger({
 
 
 //Export Object
-Object.defineProperty(exports, "LOG", {value: logger});
+Object.defineProperty(exports, "LOG", { value: logger });
